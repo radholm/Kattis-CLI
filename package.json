@@ -1,14 +1,22 @@
 {
   "name": "kattis",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
-    "kattis": "./index.js"
+    "@radholm/Kattis-CLI": "bin/kattis",
+    "Kattis-CLI": "bin/kattis",
+    "kattis": "bin/kattis"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "kattis"
+  ],
   "author": "",
   "license": "ISC",
   "repository": {
@@ -19,5 +27,10 @@
     "url": "https://github.com/radholm/Kattis-CLI/issues"
   },
   "homepage": "https://github.com/radholm/Kattis-CLI#readme",
-  "description": ""
+  "description": "A CLI tool for Kattis",
+  "dependencies": {
+    "arg": "^5.0.0",
+    "esm": "^3.2.25",
+    "inquirer": "^7.3.3"
+  }
 }
