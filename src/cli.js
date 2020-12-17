@@ -1,25 +1,25 @@
 import arg from "arg";
+import { getProblem } from "./main";
 
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg(
     {
-      "--git": Boolean,
-      "--yes": Boolean,
-      "--install": Boolean,
-      "-g": "--git",
-      "-y": "--yes",
-      "-i": "--install",
+      "--update": Boolean,
+      "--problem": Boolean,
+      "-u": "--update",
+      "-p": "--problem",
     },
     {
       argv: rawArgs.slice(2),
     }
   );
   return {
-    skipPrompts: args["--yes"] || false,
-    git: args["--git"] || false,
-    template: args._[0],
-    runInstall: args["--install"] || false,
+    updateData: args["--update"] || false,
+    getProblem: args["--problem"] || false,
   };
+}
+
+async function promtForMissingOptions(options) {
 }
 
 export function cli(args) {
