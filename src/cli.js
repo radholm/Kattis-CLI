@@ -23,28 +23,28 @@ function parseArgumentsIntoOptions(rawArgs) {
 async function promtForMissingOptions(options) {
   if (options.skipPrompts) {
     return {
-      ...options
+      ...options,
     };
   }
 
   const questions = [];
 
   questions.push({
-    type: 'confirm',
-    name: 'prob',
-    message: 'Update?',
+    type: "confirm",
+    name: "prob",
+    message: "Update?",
     default: false,
   });
 
   const answers = await inquirer.prompt(questions);
-   return {
-     ...options
-   };
+  return {
+    ...options,
+  };
 }
 
 export async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
   options = await promtForMissingOptions(options);
-  //getProblem();
+  await getProblem(options);
   console.log(options);
 }

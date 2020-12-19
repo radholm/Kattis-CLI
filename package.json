@@ -34,6 +34,7 @@
     "esm": "^3.2.25",
     "inquirer": "^7.3.3",
     "listr": "^0.14.3",
+    "ora": "^5.1.0",
     "simple-webscraper": "^1.5.4"
   }
 }
