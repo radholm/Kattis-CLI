@@ -1,13 +1,21 @@
 import chalk from "chalk";
 import Listr from "listr";
-const Ora = require("ora");
 
 export async function getProblem(options) {
+  const tasks = new Listr([
+    {
+      title: "Fetch Kattis problems",
+      task: () => webScrape(),
+    },
+  ]);
+
+  await tasks.run();
+
   console.log("%s Problems ready", chalk.green.bold("DONE"));
   return true;
 }
 
-async function webScrape() {
+export async function webScrape() {
   const { exporting, Spider } = require("simple-webscraper");
 
   try {
