@@ -1,4 +1,5 @@
 import arg from "arg";
+import inquirer from "inquirer";
 import { getProblem } from "./main";
 
 function parseArgumentsIntoOptions(rawArgs) {
@@ -14,15 +15,36 @@ function parseArgumentsIntoOptions(rawArgs) {
     }
   );
   return {
-    updateData: args["--update"] || false,
-    getProblem: args["--problem"] || false,
+    update: args["--update"] || false,
+    problem: args["--problem"] || false,
   };
 }
 
 async function promtForMissingOptions(options) {
+  if (options.skipPrompts) {
+    return {
+      ...options
+    };
+  }
+
+  const questions = [];
+
+  questions.push({
+    type: 'confirm',
+    name: 'prob',
+    message: 'Update?',
+    default: false,
+  });
+
+  const answers = await inquirer.prompt(questions);
+   return {
+     ...options
+   };
 }
 
-export function cli(args) {
+export async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
+  options = await promtForMissingOptions(options);
+  //getProblem();
   console.log(options);
 }

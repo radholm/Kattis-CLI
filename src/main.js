@@ -1,19 +1,20 @@
 import chalk from "chalk";
 import Listr from "listr";
-const { exporting, Spider } = require("simple-webscraper");
+//const { exporting, Spider } = require("simple-webscraper");
 
 export async function getProblem(options) {
-  (async function () {
+  /*(async function () {
     try {
-      const s = new Spider("https://open.kattis.com/problems");
+      const s = new Spider("https://www.jobsite.co.uk/jobs/javascript");
       await s
-        .appendSelector("table.problem_list > .tbody")
-        .setExportFunct(exporting.file("pogchamp.log", "INFO %s, %s, %s"))
+        .appendSelector(".job > .row > .col-sm-12")
+        //.appendSelector("table.problem_list > .tbody")
+        .setExportFunct(exporting.file("results.log", "INFO %s, %s, %s"))
         .run();
     } catch (e) {
       console.error(e);
     }
-  })();
+  })(); */
 
   //const tasks = new Listr([
   //    {
